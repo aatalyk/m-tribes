@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (4.5.1)
+  - EasyPeasy (1.6.0)
+  - GoogleMaps (2.4.0):
+    - GoogleMaps/Maps (= 2.4.0)
+  - GoogleMaps/Base (2.4.0)
+  - GoogleMaps/Maps (2.4.0):
+    - GoogleMaps/Base
+  - Realm (3.0.0):
+    - Realm/Headers (= 3.0.0)
+  - Realm/Headers (3.0.0)
+  - RealmSwift (3.0.0):
+    - Realm (= 3.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.5)
+  - EasyPeasy
+  - GoogleMaps
+  - Realm
+  - RealmSwift
+
+SPEC CHECKSUMS:
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  EasyPeasy: aef0a77d7e7636d6b5e046194bc911b0a8d73c88
+  GoogleMaps: 8436ab5d1c25e36915b2f7416d0c8e3fa2e76c61
+  Realm: dec0de73be8c57506e39db72694d513c189493b3
+  RealmSwift: 44a7090b16d1b22a406c6bf129bdd602db1bbecc
+
+PODFILE CHECKSUM: 39f0f3bd353b09d8f47031eeb1ac33e91fd4d666
+
+COCOAPODS: 1.4.0
