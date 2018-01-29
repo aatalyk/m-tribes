@@ -157,9 +157,7 @@ class MapView: BaseView {
     //MARK: - Helper methods
     @objc private func showCar(_ notification: Notification) {
         generateClusterItems()
-        guard let car = notification.userInfo?[UserInfo.Car.rawValue] as? Car else {
-            return
-        }
+        guard let car = notification.userInfo?[UserInfo.Car.rawValue] as? Car else { return }
         if let latitude = car.coordinate?.latitude,
             let longitude = car.coordinate?.longitude {
             camera = GMSCameraPosition.camera(withLatitude: latitude,
@@ -177,9 +175,7 @@ class MapView: BaseView {
             detailView.details = details
             
             UIView.animate(withDuration: 0.3) { [weak self] in
-                guard let weakSelf = self else {
-                    return
-                }
+                guard let weakSelf = self else { return }
                 weakSelf.detailView.frame.origin.y = weakSelf.frame.height*2/3
             }
 
@@ -188,9 +184,7 @@ class MapView: BaseView {
     
     @objc private func hideDetailedView() {
         UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
+            guard let weakSelf = self else { return }
             weakSelf.detailView.frame.origin.y = weakSelf.frame.height
         }
     }
@@ -206,9 +200,7 @@ class MapView: BaseView {
 //MARK: - GMSMapView Delegate
 extension MapView: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        guard let poiItem = marker.userData as? POIItem else {
-            return true
-        }
+        guard let poiItem = marker.userData as? POIItem else {  return true }
         if let tappedMarker = tappedMarker {
             if tappedMarker.position.latitude == marker.position.latitude && tappedMarker.position.longitude == marker.position.longitude {
                 generateClusterItems()

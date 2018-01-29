@@ -84,13 +84,9 @@ class ListView: BaseView {
     
     fileprivate func distanceBetweenCoordinates(fromCoordinate: Coordinate?) -> String {
         
-        guard let location = myLocation else {
-            return "~"
-        }
+        guard let location = myLocation else { return "~" }
         
-        guard let coordinate = fromCoordinate else {
-            return "~"
-        }
+        guard let coordinate = fromCoordinate else { return "~" }
         
         let distance = Int(location.distance(from: CLLocation(latitude: coordinate.latitude,
                                                               longitude: coordinate.longitude)))
@@ -99,9 +95,6 @@ class ListView: BaseView {
         
         return distanceKm
     }
-    
-    
-    
 }
 
 //MARK: - UITableView Delegate

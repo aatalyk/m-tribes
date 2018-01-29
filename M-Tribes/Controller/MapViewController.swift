@@ -99,9 +99,7 @@ class MapViewController: BaseViewController {
         let listAlertAction = UIAlertAction(title: "Show cars list",
                                             style: .default) { [weak self]
                                                 (alert: UIAlertAction!) in
-                                                guard let weakSelf = self else {
-                                                    return
-                                                }
+                                                guard let weakSelf = self else { return }
                                                 weakSelf.listView.myLocation = weakSelf.mapView.mapView.myLocation
                                                 weakSelf.animateListView()
         }
@@ -119,9 +117,7 @@ class MapViewController: BaseViewController {
     // MARK: - Helpers
     @objc private func animateListView() {
         UIView.animate(withDuration: 0.3) { [weak self] in
-            guard let weakSelf = self else {
-                return
-            }
+            guard let weakSelf = self else { return }
             weakSelf.listView.frame.origin.y = weakSelf.listViewHidden ? 0 : weakSelf.view.frame.height * 2
             weakSelf.listViewHidden = !weakSelf.listViewHidden
         }
@@ -140,9 +136,7 @@ class MapViewController: BaseViewController {
         activityIndicatorView.startAnimating()
         Car.fetchCarsFromLocalDataStore { (cars) in
             DispatchQueue.main.async { [weak self] in
-                guard let weakSelf = self else {
-                    return
-                }
+                guard let weakSelf = self else { return }
                 weakSelf.update(cars: cars)
             }
         }
@@ -166,8 +160,6 @@ class MapViewController: BaseViewController {
     //MARK: - Set Constraints
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        
-        print(view.frame.width)
         
         activityIndicatorView.center = CGPoint(x: view.frame.width/2,
                                                y: view.frame.height*0.4)
