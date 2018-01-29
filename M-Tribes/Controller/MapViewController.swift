@@ -69,7 +69,8 @@ class MapViewController: BaseViewController {
         setupNavigationBar()
         setupAlertController()
         setupNotificationCenter()
-        fetchCars()
+        fetchCarsFromLocal()
+        fetchCarsFromRemote()
     }
     
     private func setupNotificationCenter() {
@@ -106,7 +107,7 @@ class MapViewController: BaseViewController {
         }
         let updateAlertAction = UIAlertAction(title: "Update cars",
                                               style: .default)
-        { (alert: UIAlertAction!) in self.updateFromDB() }
+        { (alert: UIAlertAction!) in self.fetchCarsFromRemote() }
         
         alertController.addAction(cancelAlertAction)
         alertController.addAction(listAlertAction)
@@ -135,16 +136,8 @@ class MapViewController: BaseViewController {
     }
     
     //MARK: - Data fetching
-    private func fetchCars() {
+    private func fetchCarsFromLocal() {
         activityIndicatorView.startAnimating()
-        Car.fetchCarsFromRemoteDB { (cars) in
-            DispatchQueue.main.async { [weak self] in
-                guard let weakSelf = self else {
-                    return
-                }
-                weakSelf.update(cars: cars)
-            }
-        }
         Car.fetchCarsFromLocalDataStore { (cars) in
             DispatchQueue.main.async { [weak self] in
                 guard let weakSelf = self else {
@@ -155,9 +148,9 @@ class MapViewController: BaseViewController {
         }
     }
     
-    private func updateFromDB() {
+    private func fetchCarsFromRemote() {
         activityIndicatorView.startAnimating()
-        Car.fetchCarsFromLocalDataStore { (cars) in
+        Car.fetchCarsFromRemoteDB { (cars) in
             DispatchQueue.main.async { [weak self] in
                 guard let weakSelf = self else { return }
                 weakSelf.update(cars: cars)
