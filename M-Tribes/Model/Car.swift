@@ -12,20 +12,20 @@ import Alamofire
 import Realm
 
 class Coordinate: Object {
-    dynamic var longitude = 0.0
-    dynamic var latitude = 0.0
-    dynamic var degree = 0.0
+    @objc dynamic var longitude = 0.0
+    @objc dynamic var latitude = 0.0
+    @objc dynamic var degree = 0.0
 }
 
 class Car: Object {
     
-    dynamic var address = ""
-    dynamic var coordinate: Coordinate?
-    dynamic var engineType = ""
-    dynamic var fuel = 0.0
-    dynamic var interior = ""
-    dynamic var name = ""
-    dynamic var vin = ""
+    @objc dynamic var address = ""
+    @objc dynamic var coordinate: Coordinate?
+    @objc dynamic var engineType = ""
+    @objc dynamic var fuel = 0.0
+    @objc dynamic var interior = ""
+    @objc dynamic var name = ""
+    @objc dynamic var vin = ""
     
     override class func primaryKey() -> String? {
         return "vin"
